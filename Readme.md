@@ -1,17 +1,17 @@
-# worstfilms
+# API
 API RESTful para possibilitar a leitura da lista de indicados e vencedores da categoria Pior Filme do Golden Raspberry Awards
 
-## General info
+## Informações
 Projeto desenvolvido seguindo como referência os requisitos solicitados, onde a API deve:
 * Ler o arquivo CSV dos filmes e inserir os dados em uma base de dados ao inciar a aplicação.
 * Obter o produtor com maior intervalo entre dois prêmios consecutivos, e o que obteve dois prêmios mais rápido
 
-## Technologies
+## Tecnologias
 * Java 11
 * SpringBoot(JPA, Actuator, rest, web, test, JUnit)
 * H2 in Memory Database
 
-## Setup on local dev environment
+## Configuração no ambiente de desenvolvimento local
 Para rodar o projeto em ambiente local de desenvolvimento basta clonar o projeto e importar em alguma IDE (preferencialmente Intellij).
 
 Executar a clase ``` ApiApplication ``` para subir a API que ficará disponível em ```http://locahost/8080```
@@ -21,7 +21,7 @@ Esse arquivo deve estar na raiz do projeto e o seu nome deve ser inserido na var
 
 `public static final String CSV_FILE = "movielist.csv";`
 
-#### Running the tests
+#### Executando os testes
 Para rodar os testes de integração basta rodar a classe ```ApiApplicationTests``` ou através do comando maven: ```mvn test```
 
 
@@ -69,5 +69,5 @@ Obtêm o  produtor com  maior  intervalo  entre  dois  prêmios consecutivos,  e
 }
 ```
 
-## Contact
+## Contato
 Created by [@kelvinadrian](https://www.linkedin.com/in/kelvinadrian) - feel free to contact me!
