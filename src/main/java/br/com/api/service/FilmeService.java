@@ -79,20 +79,17 @@ public class FilmeService {
             }
         }
 
-        List<ResponseDTO> producers = new ArrayList<>();
+        List<ResponseDTO> producersSorted = new ArrayList<>();
         if(producerDtoList != null && producerDtoList.size() > 0) {
-            List<ResponseDTO> producersSorted;
             if(isMax)
                 producerDtoList.sort(Comparator.comparingInt(ResponseDTO::getInterval).reversed());
             else
                 producerDtoList.sort(Comparator.comparingInt(ResponseDTO::getInterval));
             int first = producerDtoList.get(0).getInterval();
             producersSorted = producerDtoList.stream().filter(p -> p.getInterval() == first).collect(Collectors.toList());
-            Set<String> nameSet = new HashSet<>();
-            producers = producersSorted.stream().filter(e -> nameSet.add(e.getProducer())).collect(Collectors.toList());
-            producers.sort(Comparator.comparingInt(ResponseDTO::getPreviousWin));
+            producersSorted.sort(Comparator.comparingInt(ResponseDTO::getPreviousWin));
         }
-        return producers;
+        return producersSorted;
     }
 
 }

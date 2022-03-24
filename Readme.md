@@ -8,7 +8,7 @@ Projeto desenvolvido seguindo como referência os requisitos solicitados, onde a
 
 ## Tecnologias
 * Java 11
-* SpringBoot(JPA, Actuator, rest, web, test, JUnit)
+* SpringBoot(JPA, Actuator, rest, web, test, JUnit, Mock)
 * H2 in Memory Database
 
 ## Configuração no ambiente de desenvolvimento local
@@ -22,7 +22,10 @@ Esse arquivo deve estar na raiz do projeto e o seu nome deve ser inserido na var
 `public static final String CSV_FILE = "movielist.csv";`
 
 #### Executando os testes
-Para rodar os testes de integração basta rodar a classe ```ApiApplicationTests``` ou através do comando maven: ```mvn test```
+Para rodar os testes de integração basta rodar a classe ```FilmeTest``` ou através do comando maven: ```mvn test```
+Para testar o endpoint foi adicionado a variavel ```ENDPOINT``` com o endpoint do get na classe ```FilmeTest```.
+
+`public static String ENDPOINT = "/api/filmes";`
 
 
 ## REST Api

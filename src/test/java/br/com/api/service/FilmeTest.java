@@ -1,25 +1,29 @@
 package br.com.api.service;
 
-import br.com.api.ApiApplication;
 import br.com.api.model.Filme;
 import org.assertj.core.api.Assertions;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = ApiApplication.class)
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+
+@SpringBootTest
+@AutoConfigureMockMvc
 @Transactional
 public class FilmeTest {
 
+    public static String ENDPOINT = "/api/filmes";
+
+    @Autowired
+    private MockMvc mockMvc;
 
     @Autowired
     FilmeService filmeService;
@@ -29,9 +33,8 @@ public class FilmeTest {
 
     private List<Filme> listaFilmesDTO = new ArrayList<>();
 
-    @After
+    @BeforeEach
     public void init() throws Exception {
-        databaseLoader.run(null);
         listaFilmesDTO = databaseLoader.readCsvFile();
     }
 
@@ -50,6 +53,13 @@ public class FilmeTest {
 
         Assertions.assertThat(listaFilmes.get(index).getProducers()).isEqualTo(listaFilmesDTO.get(index).getProducers());
         Assertions.assertThat(listaFilmes.get(index).getYear()).isEqualTo(listaFilmesDTO.get(index).getYear());
+    }
+
+    @Test
+    void testEndPoint() throws Exception {
+        mockMvc.perform(get(ENDPOINT)
+                        .contentType("application/json"))
+                .andExpect(status().isOk());
     }
 
 }
