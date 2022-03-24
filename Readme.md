@@ -73,4 +73,4 @@ Obtêm o  produtor com  maior  intervalo  entre  dois  prêmios consecutivos,  e
 ```
 
 ## Contato
-Created by [@kelvinadrian](https://www.linkedin.com/in/kelvinadrian) - feel free to contact me!
+Created by [@kelvinadrian](https://www.linkedin.com/in/kelvinadrian)
